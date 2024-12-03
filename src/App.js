@@ -1,47 +1,103 @@
-// import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Row, Col, Nav, Navbar, NavDropdown, Container} from 'react-bootstrap';
+import {Row, Col, Navbar, Container, Offcanvas, Nav, NavDropdown, Form, Button } from 'react-bootstrap';
+import img from './assets/images/HenryCavill.jpg';
+
 
 const user = {
-  name: 'Hendy Lamarr',
-  imageUrl: 'https://i.imgur.com/yXOvdOSs.jpg',
-  imageSize: 170,
+  name: 'Henry Cavill',
+  work: 'Actor',
+  date: '5 May 1983',
+  quote: "You're using Wikipedia as your source of information?!",
+  imageSize: 300,
 };
 
 function App() {
   return (
     <>
-    <Navbar bg='light' data-bs-theme="light">
-    <Container>
-      <Navbar.Brand href='#home'>Logo</Navbar.Brand>
-      <Nav className="me-auto">
-        <Nav.Link href="#home">Home</Nav.Link>
-        <Nav.Link href="#features">Features</Nav.Link>
-        <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-          <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-        </NavDropdown>
-      </Nav>
-      </Container>
-      </Navbar>
+    {[false].map((expand) => (
+        <Navbar key={expand} expand={expand} className="bg-custom mb-3">
+          <Container fluid>
+            <Navbar.Brand href="#">Profile</Navbar.Brand>
+            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
+            <Navbar.Offcanvas
+              id={`offcanvasNavbar-expand-${expand}`}
+              aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
+              placement="end"
+            >
+              <Offcanvas.Header closeButton>
+                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
+                  Profile
+                </Offcanvas.Title>
+              </Offcanvas.Header>
+              <Offcanvas.Body>
+                <Nav className="justify-content-end flex-grow-1 pe-3">
+                  <Nav.Link href="#action1">Home</Nav.Link>
+                  <Nav.Link href="#action2">Link</Nav.Link>
+                  <NavDropdown
+                    title="Dropdown"
+                    id={`offcanvasNavbarDropdown-expand-${expand}`}
+                  >
+                    <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
+                    <NavDropdown.Item href="#action4">
+                      Another action
+                    </NavDropdown.Item>
+                    <NavDropdown.Divider />
+                    <NavDropdown.Item href="#action5">
+                      Something else here
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                </Nav>
+                <Form className="d-flex">
+                  <Form.Control
+                    type="search"
+                    placeholder="Search"
+                    className="me-2"
+                    aria-label="Search"
+                  />
+                  <Button variant="outline-success">Search</Button>
+                </Form>
+              </Offcanvas.Body>
+            </Navbar.Offcanvas>
+          </Container>
+        </Navbar>
+      ))}
 
-      <Container style={{marginTop: '2%'}}>
+      <section
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+      }}>
+
+
+      <Container>
       <Row className='align-items-center'>
         <Col xs="auto">
-        <img className="avatar"
-        src={user.imageUrl}
-        alt={'Photo of ' + user.name}
-        style={{
-          width: user.imageSize,
-          height: user.imageSize
-        }}
-        />  
+          <img className="avatar"
+          src={img}
+          alt={'Photo of ' + user.name}
+          style={{
+            width: user.imageSize,
+            height: user.imageSize
+          }}
+          />  
         </Col>
-        <Col style={{margin: 0}}><h1>{user.name}</h1></Col>
+        <Col>
+          <div>
+            <ul>
+              <h1>{user.name}</h1>
+              <p>{user.work}</p>
+              <p>{user.date}</p>
+              <blockquote>{user.quote}</blockquote>
+            </ul>
+          </div>
+        </Col>
       </Row>
     </Container>
+    </section>
     </>
   );
 }
