@@ -44,3 +44,15 @@
 .container{
   display: flex;
 }
+
+blockquote {
+  font-style: italic;
+  /* margin: 20px;
+  padding: 10px;
+  border-left: 4px solid #ccc; */
+  color: #555;
+}
+
+.bg-custom {
+  background-color: #ffffff;
+}
