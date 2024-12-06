@@ -37,22 +37,45 @@
   }
 }
 
+@font-face {
+  font-family: 'Manrope';
+  src: url('/src/assets/fonts/Manrope-SemiBold.ttf') format('ttf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Helvetica';
+  src: url('/src/assets/fonts/HelveticaNeueCondensedBold.ttf') format('ttf');
+}
+
 .avatar {
   border-radius: 50%;
 }
 
-.container{
+.custom-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: #010101; 
+  transition: background-color 0.3s ease;
+  color: #ffffff; 
+}
+
+.navbar-brand,
+.custom-navbar .nav-link {
+  color: white !important;
+}
+
+.section1 {
+  background-image: url('/src/assets/images/henry.jpg');
+  background-size: cover; 
+  background-position: center;
+  height: 100vh;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
 }
 
-blockquote {
-  font-style: italic;
-  /* margin: 20px;
-  padding: 10px;
-  border-left: 4px solid #ccc; */
-  color: #555;
-}
-
-.bg-custom {
-  background-color: #ffffff;
-}
