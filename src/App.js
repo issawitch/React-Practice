@@ -1,103 +1,64 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Row, Col, Navbar, Container, Offcanvas, Nav, NavDropdown, Form, Button } from 'react-bootstrap';
-import img from './assets/images/HenryCavill.jpg';
+import { Navbar, Container, Offcanvas, Nav, NavDropdown, Row, Col } from 'react-bootstrap';
 
-
-const user = {
+const user={
   name: 'Henry Cavill',
-  work: 'Actor',
-  date: '5 May 1983',
-  quote: "You're using Wikipedia as your source of information?!",
-  imageSize: 300,
-};
+  summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 
+}
 function App() {
+
   return (
     <>
-    {[false].map((expand) => (
-        <Navbar key={expand} expand={expand} className="bg-custom mb-3">
-          <Container fluid>
-            <Navbar.Brand href="#">Profile</Navbar.Brand>
-            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
-            <Navbar.Offcanvas
-              id={`offcanvasNavbar-expand-${expand}`}
-              aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
-              placement="end"
-            >
-              <Offcanvas.Header closeButton>
-                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                  Profile
-                </Offcanvas.Title>
-              </Offcanvas.Header>
-              <Offcanvas.Body>
-                <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link href="#action1">Home</Nav.Link>
-                  <Nav.Link href="#action2">Link</Nav.Link>
-                  <NavDropdown
-                    title="Dropdown"
-                    id={`offcanvasNavbarDropdown-expand-${expand}`}
-                  >
-                    <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                    <NavDropdown.Item href="#action4">
-                      Another action
-                    </NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action5">
-                      Something else here
-                    </NavDropdown.Item>
-                  </NavDropdown>
-                </Nav>
-                <Form className="d-flex">
-                  <Form.Control
-                    type="search"
-                    placeholder="Search"
-                    className="me-2"
-                    aria-label="Search"
-                  />
-                  <Button variant="outline-success">Search</Button>
-                </Form>
-              </Offcanvas.Body>
-            </Navbar.Offcanvas>
-          </Container>
-        </Navbar>
-      ))}
+      <Navbar expand="lg" className={'custom-navbar'} style={{fontFamily: 'Manrope', fontWeight: 'bold'}}>
+        <Container fluid style={{ paddingLeft: '5vw', paddingRight: '5vw' }}>
+          <Navbar.Brand href="#" >Profile.</Navbar.Brand>
+          <Navbar.Toggle aria-controls="offcanvasNavbar" />
+          <Navbar.Offcanvas
+            id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel"
+            placement="end"
+          >
+            <Offcanvas.Header closeButton>
+              <Offcanvas.Title id="offcanvasNavbarLabel">Menu</Offcanvas.Title>
+            </Offcanvas.Header>
+            <Offcanvas.Body>
+              <Nav className="justify-content-end flex-grow-1 pe-3">
+                <Nav.Link href="#home">Home</Nav.Link>
+                <Nav.Link href="#about">About</Nav.Link>
+                <NavDropdown title="More" id="offcanvasNavbarDropdown">
+                  <NavDropdown.Item href="#action1">Action</NavDropdown.Item>
+                  <NavDropdown.Item href="#action2">Another Action</NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="#action3">Something Else</NavDropdown.Item>
+                </NavDropdown>
+              </Nav>
+            </Offcanvas.Body>
+          </Navbar.Offcanvas>
+        </Container>
+      </Navbar>
 
-      <section
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-      }}>
+      <section className="section1">
+        <Container>
+          <Row>
+            <Col md={6}></Col>
+            <Col md={6}>
+              <h1 style={{fontFamily: 'Manrope', fontSize: '7vw', fontWeight: 'bold'}}>{user.name}</h1>
+              <p style={{fontFamily: 'Helvetica', fontSize: '15px'}}>{user.summary}</p>
+            </Col>
+          </Row>
+        </Container>
+      </section>
 
-
-      <Container>
-      <Row className='align-items-center'>
-        <Col xs="auto">
-          <img className="avatar"
-          src={img}
-          alt={'Photo of ' + user.name}
-          style={{
-            width: user.imageSize,
-            height: user.imageSize
-          }}
-          />  
-        </Col>
-        <Col>
-          <div>
-            <ul>
-              <h1>{user.name}</h1>
-              <p>{user.work}</p>
-              <p>{user.date}</p>
-              <blockquote>{user.quote}</blockquote>
-            </ul>
-          </div>
-        </Col>
-      </Row>
-    </Container>
-    </section>
+      <section className='section2'>
+        <Container>
+          <Row>
+            <Col md={6} style={{backgroundColor: 'blue'}}>HELLO</Col>
+          </Row>
+        </Container>
+      </section>
     </>
   );
 }
